@@ -32,7 +32,7 @@ current_time_unix = int(datetime.now().timestamp())
 data_with_time = [[current_time_unix] + row for row in data_sort]
 
 # arr row to str
-data = [','.join(map(str, row)).replace(' ', '') for row in data_with_time]
+data = [','.join(map(str, row)) for row in data_with_time]
 result = '\n'.join(data)
 print(f"{result}\n")
 
