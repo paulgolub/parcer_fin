@@ -18,7 +18,7 @@ soup = BeautifulSoup(response.text, 'html.parser')
 data_elements = soup.select('.course-brief-info__body .course-brief-info__b')
 
 # raw data into array
-rawdata = [element.get_text(strip=True) for element in data_elements if element.get_text(strip=True)]
+rawdata = [element.get_text(strip=True).replace(' ', '') for element in data_elements if element.get_text(strip=True)]
 
 data_sort = [
     [rawdata[0], rawdata[3], rawdata[4], rawdata[9], rawdata[12], rawdata[13]],
@@ -33,7 +33,6 @@ data_with_time = [[current_time_unix] + row for row in data_sort]
 
 # arr row to str
 data = [','.join(map(str, row)).replace(' ', '') for row in data_with_time]
-
 result = '\n'.join(data)
 print(f"{result}\n")
 
